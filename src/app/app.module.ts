@@ -9,6 +9,8 @@ import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {DropdownModule} from "primeng/dropdown";
+import {DragDropModule} from 'primeng/dragdrop';
+import {TableModule} from 'primeng/table';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import {DropdownModule} from "primeng/dropdown";
     InputTextModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    DropdownModule
+    DropdownModule,
+    DragDropModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

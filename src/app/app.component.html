@@ -1,3 +1,45 @@
 
-  <p-dropdown [options]="Games" ></p-dropdown>
-  <input type="text" pInputText />
+  <p-dropdown [options]="Games" ></p-dropdown><br>
+ Quantité <input type="text" pInputText />
+<!------------------------------------------------------------------------------------->
+  Drag and Drop to Table
+  <div class="p-grid">
+    <div class="p-col-12 p-md-6 drag-column">
+      <div *ngFor="let game of Games">
+        <div class="product-item" pDraggable="games" (onDragStart)="dragStart(game)" (onDragEnd)="dragEnd()">
+          <div class="image-container">
+            <img src="assets/showcase/images/fifa-21.jpg" [alt]="game.name" class="product-image" />
+          </div>
+          <div class="product-list-detail">
+            <h5 class="p-mb-2">{{game.nomJeu}}</h5>
+            <i class="pi pi-tag product-category-icon"></i>
+            <span class="product-category">{{game.category}}</span>
+          </div>
+          <div class="product-list-action">
+            <h6 class="p-mb-2">${{game.prix}}</h6>
+            <span class="'product-badge status-'{{game.inventoryStatus.toLowerCase()}}">{{game.inventoryStatus}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p-col-12 p-md-6 drop-column" pDroppable="products" (onDrop)="drop()">
+      <p-table [value]="selectedGame">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>ID</th>
+            <th>Category</th>
+            <th>Name</th>
+            <th>Price</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-game>
+          <tr>
+            <td>{{game.nomJeu}}</td>
+            <td>{{game.genre}}</td>
+            <td>{{game.plateforme}}</td>
+            <td>{{game.price}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>

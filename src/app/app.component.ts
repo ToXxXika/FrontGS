@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import {Commande} from './Models/Commande';
 import {MessageService} from 'primeng/api';
 import {CommandeService} from './Services/commande.service';
+import {Jeuvideo} from './Models/Jeuvideo';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,9 @@ export class AppComponent implements OnInit {
   C:Commande = new Commande();
   dateValue!: Date;
   Games: any[]=[];
-  selectedGame: any;
+  selectedGame: Jeuvideo[]=[];
+  draggedGame!: any;
+
 
 
   constructor(private messageSerivce:MessageService,private CommandeService:CommandeService) {
@@ -28,7 +31,7 @@ export class AppComponent implements OnInit {
   public FillArrays(){
 
   }
-  public FillListBoxes(){
+ /* public FillListBoxes(){
      this.Games.push({label:'Liste des jeux videos',value:''});
      this.CommandeService.getGames().subscribe(data=>{
        console.log(data[0].nomJeu)
@@ -37,7 +40,7 @@ export class AppComponent implements OnInit {
        }
      })
 
-  }
+  }*/
   public AddCommande(ListeQte:any,ListJeu:any){
 
      this.C.idCommande= this.RandomGenerator(100,9999)
@@ -51,9 +54,33 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.FillListBoxes();
+    this.selectedGame=[];
+    this.CommandeService.getGames().subscribe(data=>{
+      this.Games=data;
+    });
   }
-
-
-
+  dragStart(game: Jeuvideo) {
+    this.draggedGame=game;
+  }
+  dragEnd() {
+    this.draggedGame=null;
+  }
+  findIndex(game: Jeuvideo) {
+    let index = -1;
+    for(let i = 0; i < this.Games.length; i++) {
+      if (game.referencej === this.Games[i].referencej) {
+        index = i;
+        break;
+      }
+    }
+    return index;
+  }
+  drop() {
+    if(this.draggedGame){
+      let draggedGameIndex = this.findIndex(this.draggedGame);
+      this.selectedGame = [...this.selectedGame,this.draggedGame];
+      this.Games= this.Games.filter((val,i)=>i !=draggedGameIndex);
+      this.draggedGame=null ;
+    }
+  }
 }
