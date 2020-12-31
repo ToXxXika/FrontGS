@@ -1,5 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import {Commande} from './Models/Commande';
+import {MessageService} from 'primeng/api';
+import {CommandeService} from './Services/commande.service';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +13,11 @@ export class AppComponent implements OnInit {
 
   C:Commande = new Commande();
   dateValue!: Date;
-  Games: any;
+  Games: any[]=[];
   selectedGame: any;
 
-  constructor() {
+
+  constructor(private messageSerivce:MessageService,private CommandeService:CommandeService) {
   }
   public RandomGenerator(min,max){
     min = Math.ceil(min);
@@ -22,6 +25,15 @@ export class AppComponent implements OnInit {
     return Math.floor(Math.random() * (max - min)) + min;
   }
   public FillArrays(){
+
+  }
+  public FillListBoxes(){
+     this.Games.push({label:'Liste des jeux videos',value:''});
+     this.CommandeService.getGames().subscribe(data=>{
+       for(let i=0;i<data.length;i++){
+         this.Games.push({label:data[i].nomJeu,value:data[i].referencej})
+       }
+     })
 
   }
   public AddCommande(ListeQte:any,ListJeu:any){
@@ -37,13 +49,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.Games=[
-      {name: 'New York', code: 'NY'},
-      {name: 'Rome', code: 'RM'},
-      {name: 'London', code: 'LDN'},
-      {name: 'Istanbul', code: 'IST'},
-      {name: 'Paris', code: 'PRS'}
-    ]
+    this.FillListBoxes();
   }
 
 
