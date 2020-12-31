@@ -8,6 +8,7 @@ import {ListboxModule} from 'primeng/listbox';
 import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import {DropdownModule} from "primeng/dropdown";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     InputTextModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]
