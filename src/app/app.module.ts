@@ -11,7 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {DropdownModule} from "primeng/dropdown";
 import {DragDropModule} from 'primeng/dragdrop';
 import {TableModule} from 'primeng/table';
-
+import {ToastModule} from "primeng/toast";
+import {ButtonModule} from "primeng/button";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import {TableModule} from 'primeng/table';
     HttpClientModule,
     DropdownModule,
     DragDropModule,
-    TableModule
+    TableModule,
+    ToastModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

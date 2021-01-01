@@ -6,4 +6,5 @@ nomJeu?;
  prix?;
  qte?;
  plateforme?;
+ image?;
 }
