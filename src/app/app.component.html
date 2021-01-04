@@ -35,10 +35,10 @@ Quantité <input type="text" pInputText />-->
         </ng-template>
          <ng-template pTemplate="body" let-games>
            <tr>
-           <td>{{games["Game"].nomJeu}}</td>
-           <td>{{games["Game"].genre}}</td>
-           <td>{{games["Qte"]}}</td>
-           <td>{{CalculPrix(games['Game'].prix,games["Qte"])}}</td>
+           <td>{{games["game"].nomJeu}}</td>
+           <td>{{games["game"].genre}}</td>
+           <td>{{games["qte"]}}</td>
+           <td>{{CalculPrix(games['game'].prix,games["qte"])}}</td>
            </tr>
          </ng-template>
         <ng-template pTemplate="footer">

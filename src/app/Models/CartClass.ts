@@ -1,5 +1,5 @@
 export class CartClass{
-  Qte?;
-  Game?;
-//  List? ;
+  qte?;
+  game?;
+
 }

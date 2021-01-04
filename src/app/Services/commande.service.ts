@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Commande} from '../Models/Commande';
 import {Jeuvideo} from '../Models/Jeuvideo';
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,10 @@ export class CommandeService {
   private GetAllcommands(){
     return this.Http.get<Commande[]>(this.urlGetCommande);
   }
-  public SaveCommande(ListQte:any[],ListRef:any[],C:Commande){
-    let opts : { params : HttpParams};
-    opts = { params : new HttpParams({fromString: 'Qte='+JSON.stringify(ListQte)+'&ListJ='+JSON.stringify(ListRef)+"&CC="+JSON.stringify(C)})};
-      return this.Http.post<any>(this.urlAddCommande,opts,);
+  public SaveCommande(ListGame:any){
+    console.log("===============================")
+        console.log(ListGame)
+      return this.Http.post<any>(this.urlAddCommande,ListGame);
   }
   public getGames(){
     return this.Http.get<Jeuvideo[]>(this.urlGetGames);
