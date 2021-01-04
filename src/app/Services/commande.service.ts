@@ -14,10 +14,10 @@ export class CommandeService {
   private GetAllcommands(){
     return this.Http.get<Commande[]>(this.urlGetCommande);
   }
-  public SaveCommande(ListQte:any,ListRef:any,C:Commande){
+  public SaveCommande(ListQte:any[],ListRef:any[],C:Commande){
     let opts : { params : HttpParams};
-    opts = { params : new HttpParams({fromString: 'marque='+ListQte+'&type='+ListRef})};
-      return this.Http.post<any>(this.urlAddCommande,C,opts);
+    opts = { params : new HttpParams({fromString: 'Qte='+JSON.stringify(ListQte)+'&ListJ='+JSON.stringify(ListRef)+"&CC="+JSON.stringify(C)})};
+      return this.Http.post<any>(this.urlAddCommande,opts,);
   }
   public getGames(){
     return this.Http.get<Jeuvideo[]>(this.urlGetGames);

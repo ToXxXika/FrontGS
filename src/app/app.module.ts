@@ -13,6 +13,9 @@ import {DragDropModule} from 'primeng/dragdrop';
 import {TableModule} from 'primeng/table';
 import {ToastModule} from "primeng/toast";
 import {ButtonModule} from "primeng/button";
+import {ConfirmPopupModule} from 'primeng/confirmpopup';
+import { MatDialogModule} from '@angular/material/dialog';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,11 @@ import {ButtonModule} from "primeng/button";
     DragDropModule,
     TableModule,
     ToastModule,
-    ButtonModule
+    ButtonModule,
+    ConfirmPopupModule,
+    MatDialogModule,
+    ConfirmDialogModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
