@@ -16,6 +16,7 @@ import {ButtonModule} from "primeng/button";
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import { MatDialogModule} from '@angular/material/dialog';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {DialogModule} from "primeng/dialog";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
     ButtonModule,
     ConfirmPopupModule,
     MatDialogModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    DialogModule
 
   ],
   providers: [],
